@@ -1,6 +1,6 @@
 <template>
     <div>
-        <span class="text-warning" data-bs-toggle="modal" data-bs-target="#sheetmodal">
+        <span class="text-warning" data-bs-toggle="modal" @click="showCreateModal">
             <i class="fas fa-plus"></i> Add new sheet
         </span>
         <!-- Modal -->
@@ -43,6 +43,7 @@
 <script>
 import { reactive } from 'vue';
 import useSheet from '../../services/sheetservices.js';
+import Swal from 'sweetalert2';
 export default {
     emits: ['sheet-added'],
 
@@ -54,16 +55,38 @@ export default {
             category: ''
         });
 
+        let myModal = '';
+
         const { createSheet, sheets } = useSheet();
+
+        const showCreateModal = () => {
+            myModal = new bootstrap.Modal(document.getElementById('sheetmodal'), {
+                backdrop: true
+            });
+            myModal.show()
+        }
 
         const storeSheet = async () => {
            await createSheet({ ... form })
+           await Swal.fire({
+                toast: true,
+                position: 'top-right',
+                icon: 'info',
+                title: 'New sheet added',
+                showConfirmButton: false,
+                color: '#fff',
+                background: '#87adbd',
+                timer: 1500,
+                timerProgressBar: true
+            })
+            await myModal.hide();
            await emit('sheet-added', sheets);
         }
 
         return{
             form,
-            storeSheet
+            storeSheet,
+            showCreateModal
         }
     }
 }

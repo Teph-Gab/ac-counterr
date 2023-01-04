@@ -2,6 +2,9 @@ require('./bootstrap');
 
 import { createApp } from "vue";
 import router from './router';
+import { Bar } from 'vue-chartjs'
+// import { abilitiesPlugin, ability } from '@casl/vue';
+// import ability from './services/ability';
 
 import Index from './pages/counter/Index.vue';
 import AddAcs from './components/AddAcs.vue';
@@ -13,5 +16,8 @@ const app = createApp({Index});
 app.component('AddAcs', AddAcs);
 app.component('EditAcs', EditAcs);
 app.component('AddSheet', AddSheet);
-// app.use(Swal);
+app.component('Bar', Bar);
+// app.use(abilitiesPlugin, ability, {
+//     useGlobalProperties: true
+//   });
 app.use(router).mount("#app");

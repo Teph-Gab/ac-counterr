@@ -17,6 +17,7 @@ class CreateCountersTable extends Migration
             $table->id();
             $table->json('completedacs')->nullable();
             $table->json('restartacs')->nullable();
+            $table->json('launchedacs')->nullable();
             $table->json('duplicateacs')->nullable();
             $table->foreignId('user_id')->constrained();
             $table->timestamps();

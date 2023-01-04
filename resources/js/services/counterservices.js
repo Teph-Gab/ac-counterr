@@ -39,7 +39,7 @@ export default function useCounter() {
         try {
             console.log(acs.value[0].completedacs);
             navigator.clipboard.writeText(
-                data.value[0].completedacs + data.value[0].restartacs
+                data.value[0].completedacs + data.value[0].restartacs + data.value[0].launchedacs
             );
         } catch (e) {
             throw e;
@@ -56,7 +56,7 @@ export default function useCounter() {
         let removeSpaces = removeWords.replace(/\s+|/gi, "");
 
         var checkAc = /[1234567890]/gi;
-        var checkDOneUndone = /completed|restart|done|undone/gi,
+        var checkDOneUndone = /completed|restart|successfully|done|undone/gi,
             ci;
         var tabloAc = removeSpaces.match(checkAc);
         var tabloDoneUndone = removeSpaces.match(checkDOneUndone);
@@ -64,6 +64,7 @@ export default function useCounter() {
         var tab2 = [];
         var tot_done = [];
         var tot_undone = [];
+        var tot_launched = [];
         var tabString = tabloAc.toString();
         var tabOnlyNum = tabString.replace(/,/gi, " ");
         var removeAllSpaces = tabOnlyNum.replace(/\s+|/gi, "");
@@ -82,19 +83,30 @@ export default function useCounter() {
             if (tabloDoneUndone[i] == "completed") {
                 tab2[i] = "(" + tab2[i] + "-completed) ";
             }
+            if (tabloDoneUndone[i] == "successfully") {
+                tab2[i] = "(" + tab2[i] + "-launched) ";
+            }
         }
 
         for (let i = 0; i < tab2.length; i++) {
             if (tab2[i].includes("completed")) {
                 tot_done.push(tab2[i]);
-            } else {
+            }
+            else if (tab2[i].includes("launched")) {
+                tot_launched.push(tab2[i]);
+            } 
+            else {
                 tot_undone.push("(" + tab2[i] + "-restart) ");
             }
         }
 
+        // console.log(tot_done)
+        // console.log(tot_undone)
+        // console.log(tot_launched);
         tot_acs.value = {
             total_completed_acs: tot_done,
             total_restart_acs: tot_undone,
+            total_launched_acs: tot_launched,
         };
     };
 

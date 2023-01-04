@@ -4,6 +4,7 @@ import axios from "axios";
 export default function useSheet() {
     const sheets = ref([]);
     const sheet = ref();
+    const sheetUrl = ref();
 
     const getSheets = async () => {
         let response = await axios.get("/api/sheets");
@@ -14,9 +15,15 @@ export default function useSheet() {
         await axios.post("api/sheets", data);
     };
 
+    const showSheet = async (url) =>{
+       sheetUrl.value = await url;
+   }
+
     return {
         sheets,
         getSheets,
-        createSheet
+        createSheet,
+        showSheet,
+        sheetUrl
     };
 }

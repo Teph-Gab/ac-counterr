@@ -27,3 +27,7 @@ Route::get('buttonshow', [CounterController::class, 'showButton']);
 Route::apiResource('oldcounter', OldCounterController::class);
 
 Route::apiResource('sheets', SheetController::class);
+
+Route::get('weeklydata', [OldCounterController::class, 'getWeeklyData']);
+
+Route::get('monthlydata', [OldCounterController::class, 'getMonthlyData']);

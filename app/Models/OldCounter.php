@@ -10,11 +10,12 @@ class OldCounter extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['completedacs', 'restartacs', 'duplicateacs'];
+    protected $fillable = ['completedacs', 'restartacs', 'duplicateacs', 'launchedacs'];
     
     protected $casts = [
         'completedacs' => 'array',
         'restartacs' => 'array',
+        'launchedacs' => 'array',
         'duplicateacs' => 'array'
         ];
 

@@ -4,12 +4,26 @@ import Chart from 'chart.js/auto';
 
 export default function useActivity() {
     const oldacs = ref([]);
+    const weeklydata = ref([]);
+    const monthlydata = ref([]);
     const oldac = ref();
 
     const getOldAcs = async () => {
         let response = await axios.get("/api/oldcounter");
         oldacs.value = response.data;
     };
+
+    const getWeeklyData = async () => {
+      let response = await axios.get("/api/weeklydata");
+      weeklydata.value = response.data;
+      console.log(weeklydata.value)
+  };
+
+  const getMonthlyData = async () => {
+    let response = await axios.get("/api/monthlydata");
+    monthlydata.value = response.data;
+    console.log(monthlydata.value)
+};
 
      const launchChart =  (salesChartCanvas) =>{
           //-----------------------
@@ -81,6 +95,10 @@ export default function useActivity() {
     return {
         getOldAcs,
         oldacs,
-        launchChart
+        launchChart,
+        getWeeklyData,
+        weeklydata,
+        monthlydata,
+        getMonthlydata
     };
 }

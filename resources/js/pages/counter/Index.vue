@@ -2,7 +2,7 @@
 <div class="container-fluid">
         <!-- Info boxes -->
         <div class="row mt-2">
-          <div class="col-12 col-sm-6 col-md-4">
+          <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
               <span class="info-box-icon bg-success elevation-1"><i class="fas fa-check"></i></span>
 
@@ -17,7 +17,7 @@
             <!-- /.info-box -->
           </div>
           <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-4">
+          <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box">
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-redo"></i></span>
 
@@ -32,14 +32,28 @@
             <!-- /.info-box -->
           </div>
           <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-4">
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-rocket"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Launched</span>
+                <span class="info-box-number" v-for="ac in acs" :key="ac.id">
+                  {{ ac.launchedacs.length }}
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box">
               <!-- <span class="info-box-icon bg-info elevation-1"><i class="fas fa-abacus"></i></span> -->
 
               <div class="info-box-content">
                 <span class="info-box-text">Total</span>
                 <span class="info-box-number" v-for="ac in acs" :key="ac.id">
-                  {{ ac.restartacs.length + ac.completedacs.length }}
+                  {{ ac.restartacs.length + ac.completedacs.length + ac.launchedacs.length }}
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -99,12 +113,15 @@
               <!-- /.card-header -->
               <div class="card-body">
                 <div class="row">
-                  <div class="col-md-12" v-for="ac in acs" :key="ac.id">
-                      <span v-for="(completedac, index) in ac.completedacs" :key="index">
-                        {{ completedac}}
+                  <div class="col-md-12" v-for="ac in acs" :key="ac.id" style="text-align: justify; text-justify: inter-word;">
+                      <span v-for="(completedac, index) in ac.completedacs" :key="index" style="color: #f5f5dc">
+                        {{ completedac }}
                       </span>
-                      <span v-for="(restartac, index) in ac.restartacs" :key="index">
+                      <span v-for="(restartac, index) in ac.restartacs" :key="index" style="color: #FFC0CB">
                         {{ restartac }}
+                      </span>
+                      <span v-for="(launchedac, index) in ac.launchedacs" :key="index" style="color: #B0E0E6">
+                        {{ launchedac }}
                       </span>
                   </div>
                 </div>
