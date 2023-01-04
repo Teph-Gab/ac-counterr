@@ -19,7 +19,7 @@ class CounterController extends Controller
      */
     public function index(Request $request)
     {
-        return $request->user();
+        return $request->user()->name.'test id'.Auth::user()->name;
 
         // $acs = Counter::all();
         $acs = Counter::where('user_id', Auth::id())->get();
