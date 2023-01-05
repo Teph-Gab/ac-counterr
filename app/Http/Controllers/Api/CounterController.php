@@ -12,12 +12,17 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class CounterController extends Controller
 {
-    public $authUser;
 
     public function getAuthUser(Request $request)
     {
-        $this->authUser = $request;
-        return $this->authUser;
+        // $this->authUser = $request;
+        $this->getAuth($request->id);
+        // return $this->authUser;
+    }  
+    
+    public function getAuth($id)
+    {
+        return $id;
     }   
 
     /**
@@ -29,7 +34,7 @@ class CounterController extends Controller
 
     public function index()
     {
-            $acs = Counter::where('user_id', Auth::user()->id)->get();
+            $acs = Counter::where('user_id', 1)->get();
             return response()->json($acs);
     }
 
