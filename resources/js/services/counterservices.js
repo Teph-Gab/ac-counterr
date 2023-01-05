@@ -6,13 +6,13 @@ export default function useCounter() {
     const ac = ref([]);
     const tot_acs = ref([]);
     const showb = ref([]);
-    const user = ref([])
+    // const user = ref([])
 
-    const getAuthUser = async () => {
-        let response = await axios.get("/api/user");
-        user.value = await response.data;
-        await axios.post("/api/authuser", user.value);
-    };
+    // const getAuthUser = async () => {
+    //     let response = await axios.get("/api/user");
+    //     user.value = await response.data;
+    //     await axios.post("/api/authuser", user.value);
+    // };
 
     const getAcs = async () => {
         let response = await axios.get("/api/counter");
@@ -119,14 +119,14 @@ export default function useCounter() {
 
     const showButton = async () => {
       let response = await axios.get("/api/buttonshow")
-      showb.value = response.data;
-      console.log(showb.value)
+      showb.value = await response.data;
+    //   console.log(showb.value)
      
   };
 
     return {
-        getAuthUser,
-        user,
+        // getAuthUser,
+        // user,
         acs,
         getAcs,
         getAc,

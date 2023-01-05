@@ -6,24 +6,22 @@ use App\Models\Counter;
 use App\Models\OldCounter;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\CounterResource;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class CounterController extends Controller
 {
 
-    public function getAuthUser(Request $request)
-    {
-        // $this->authUser = $request;
-        $this->getAuth($request->id);
-        // return $this->authUser;
-    }  
+    // public function getAuthUser(Request $request)
+    // {
+    //     $this->getAuth($request->id);
+    // }  
     
-    public function getAuth($id)
-    {
-        return $id;
-    }   
+    // public function getAuth($id)
+    // {
+    //     return $id;
+    // }   
 
     /**
      * Display a listing of the resource.
@@ -34,8 +32,9 @@ class CounterController extends Controller
 
     public function index()
     {
-            $acs = Counter::where('user_id', auth('sanctum')->user()->id)->get();
-            return response()->json($acs);
+        $acs = Counter::where('user_id', Auth::id())->get();
+        return response()->json($acs);
+            // auth('sanctum')->user()->id
     }
 
     /**
@@ -70,7 +69,7 @@ class CounterController extends Controller
         $acs->completedacs = $completedTab;
         $acs->restartacs = $restartTab;
         $acs->launchedacs = $launchedTab;
-        $acs->user_id = 1;
+        $acs->user_id = Auth::id();
         $acs->save();
 
         return response()->json($acs);

@@ -151,23 +151,19 @@ import Swal from 'sweetalert2';
   export default {
     props: ['user'],
     setup(props){
-      const { getAcs, acs, copy, formatAcs, deleteAcs, showButton, showb, getAuthUser, user } = useCounter();
+      const { getAcs, acs, copy, formatAcs, deleteAcs, showButton, showb } = useCounter();
 
-      onBeforeMount(getAuthUser);
-      // onMounted(sendAuthUser);
-
+      onBeforeMount(showButton);
       onMounted(getAcs);
 
-      console.log(user.value);
 
       const refresh = async (ac) =>  {
         await axios.get('/api/counter')
           .then((response) => {
+            showb.value = 1;
             acs.value = response.data;
           })
           .catch((error) => console.log(error));
-
-          showb.value = 1;
     }
 
       const copyAcs = async () => {
