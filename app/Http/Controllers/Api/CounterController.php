@@ -70,7 +70,7 @@ class CounterController extends Controller
         $acs->completedacs = $completedTab;
         $acs->restartacs = $restartTab;
         $acs->launchedacs = $launchedTab;
-        $acs->user_id = Auth::id();
+        $acs->user_id = 1;
         $acs->save();
 
         return response()->json($acs);
