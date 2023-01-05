@@ -11,18 +11,8 @@ use App\Http\Resources\CounterResource;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class CounterController extends Controller
-{
-
-    // public function getAuthUser(Request $request)
-    // {
-    //     $this->getAuth($request->id);
-    // }  
+{ 
     
-    // public function getAuth($id)
-    // {
-    //     return $id;
-    // }   
-
     /**
      * Display a listing of the resource.
      *

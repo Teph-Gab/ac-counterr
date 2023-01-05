@@ -31,5 +31,3 @@ Route::apiResource('sheets', SheetController::class);
 Route::get('weeklydata', [OldCounterController::class, 'getWeeklyData']);
 
 Route::get('monthlydata', [OldCounterController::class, 'getMonthlyData']);
-
-// Route::post('authuser', [CounterController::class, 'getAuthUser']);

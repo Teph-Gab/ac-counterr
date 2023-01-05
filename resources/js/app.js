@@ -3,6 +3,8 @@ require('./bootstrap');
 import { createApp } from "vue";
 import router from './router';
 import { Bar } from 'vue-chartjs'
+// import { abilitiesPlugin } from '@casl/vue';
+// import ability from '@casl/ability';
 // import { abilitiesPlugin, ability } from '@casl/vue';
 // import ability from './services/ability';
 
@@ -19,5 +21,5 @@ app.component('AddSheet', AddSheet);
 app.component('Bar', Bar);
 // app.use(abilitiesPlugin, ability, {
 //     useGlobalProperties: true
-//   });
+//   })
 app.use(router).mount("#app");
