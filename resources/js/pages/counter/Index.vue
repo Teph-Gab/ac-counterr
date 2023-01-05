@@ -144,16 +144,21 @@
 </template>
   
 <script>
-import { onMounted } from 'vue';
+import { onBeforeMount, onMounted } from 'vue';
 import useCounter from "../../services/counterservices";
 import Swal from 'sweetalert2';
 
   export default {
-    
-    setup(){
-      const { getAcs, acs, copy, formatAcs, deleteAcs, showButton, showb } = useCounter();
+    props: ['user'],
+    setup(props){
+      const { getAcs, acs, copy, formatAcs, deleteAcs, showButton, showb, getAuthUser, user } = useCounter();
 
-      onMounted(getAcs);    
+      onBeforeMount(getAuthUser);
+      // onMounted(sendAuthUser);
+
+      onMounted(getAcs);
+
+      console.log(user.value);
 
       const refresh = async (ac) =>  {
         await axios.get('/api/counter')

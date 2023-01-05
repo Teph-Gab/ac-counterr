@@ -6,24 +6,31 @@ use App\Models\Counter;
 use App\Models\OldCounter;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use Auth;
 use App\Http\Resources\CounterResource;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class CounterController extends Controller
 {
+    public $authUser;
+
+    public function getAuthUser(Request $request)
+    {
+        $this->authUser = $request;
+        return $this->authUser;
+    }   
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
-        return $request->user()->name.'test id'.Auth::user()->name;
 
-        // $acs = Counter::all();
-        $acs = Counter::where('user_id', Auth::id())->get();
-        return response()->json($acs);
+
+    public function index()
+    {
+            $acs = Counter::where('user_id', Auth::user()->id)->get();
+            return response()->json($acs);
     }
 
     /**

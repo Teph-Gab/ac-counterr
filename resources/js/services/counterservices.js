@@ -5,7 +5,14 @@ export default function useCounter() {
     const acs = ref([]);
     const ac = ref([]);
     const tot_acs = ref([]);
-    const showb = ref([])
+    const showb = ref([]);
+    const user = ref([])
+
+    const getAuthUser = async () => {
+        let response = await axios.get("/api/user");
+        user.value = await response.data;
+        await axios.post("/api/authuser", user.value);
+    };
 
     const getAcs = async () => {
         let response = await axios.get("/api/counter");
@@ -118,6 +125,8 @@ export default function useCounter() {
   };
 
     return {
+        getAuthUser,
+        user,
         acs,
         getAcs,
         getAc,
