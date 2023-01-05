@@ -34,7 +34,7 @@ class CounterController extends Controller
 
     public function index()
     {
-            $acs = Counter::where('user_id', 1)->get();
+            $acs = Counter::where('user_id', auth('sanctum')->user()->id)->get();
             return response()->json($acs);
     }
 
