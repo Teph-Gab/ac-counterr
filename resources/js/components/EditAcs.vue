@@ -64,6 +64,7 @@ export default {
             })
             await myModal.hide();
             await emit('acs-added', 'updated');
+            form.acs = '';
         }
 
         const showEditModal = async () => {

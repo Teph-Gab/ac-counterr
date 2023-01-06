@@ -188,7 +188,7 @@ export default {
                     }
                 }
                 new Chart(ctx, {
-                    type: 'bar',
+                    type: 'line',
                     label: ['Bar Dataset','Bar Dataset'],
                     data: salesChartData,
                     options: salesChartOptions
@@ -242,7 +242,7 @@ export default {
                     }
                 }
                 new Chart(ctx, {
-                    type: 'line',
+                    type: 'bar',
                     data: salesChartData,
                     options: salesChartOptions
                 })

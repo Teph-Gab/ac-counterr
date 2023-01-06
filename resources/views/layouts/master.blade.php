@@ -211,9 +211,9 @@
 
   <!-- Main Footer -->
   <footer class="main-footer">
-    <strong> Developed by <a href="https://instagram.com/TephGab">Teph Gab</a>.</strong>
+    <strong> Developed by <a href="https://instagram.com/TephGab">Teph Gab</a></strong>
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 1.0.0
+      <b>Version</b> 1.0.2
     </div>
   </footer>
 </div>

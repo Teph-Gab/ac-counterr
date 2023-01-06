@@ -69,6 +69,7 @@ export default {
             })
             await myModal.hide();
             await emit('acs-added', acs);
+            form.acs = '';
         }
 
         return {

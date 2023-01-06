@@ -82,7 +82,7 @@
                   <edit-acs v-for="ac in acs" :key="ac.id" v-bind:id="ac.id" @acs-added="refresh"></edit-acs>
                 </h5>
                 <h5 class="card-title">
-                   <show-duplicated v-for="(ac, index) in acs" :key="ac.id" v-bind:duplicatedac="ac.duplicateacs"></show-duplicated>
+                   <show-duplicated v-for="ac in acs" :key="ac.id" v-bind:duplicatedac="ac.duplicateacs"></show-duplicated>
                 </h5>
 
                 <div class="card-tools">
