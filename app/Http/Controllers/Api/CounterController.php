@@ -38,10 +38,31 @@ class CounterController extends Controller
         $completedTab = [];
         $restartTab = [];
         $launchedTab = [];
+        $duplicatedTab = [];
+
+        //Check for duplicated
+        $dupCompleted = array_count_values($request->total_completed_acs);
+        $dupRestart = array_count_values($request->total_restart_acs);
+
+        foreach ($dupCompleted as $key => $value) {
+            if ($value > 1) {
+                $duplicatedTab[] = $key;
+            }
+        }
+
+        foreach ($dupRestart as $key => $value) {
+            if ($value > 1) {
+                $duplicatedTab[] = $key;
+            }
+        }
+
+        // return $duplicatedTab;
 
         $mergeCompleted = array_unique($request->total_completed_acs);
         $mergeRestart = array_unique($request->total_restart_acs);
         $mergeLaunched = array_unique($request->total_launched_acs);
+
+        // return $mergeCompleted;
 
         foreach ($mergeCompleted as $key => $value) {
             $completedTab[] = $value;
@@ -59,6 +80,7 @@ class CounterController extends Controller
         $acs->completedacs = $completedTab;
         $acs->restartacs = $restartTab;
         $acs->launchedacs = $launchedTab;
+        $acs->duplicateacs = $duplicatedTab;
         $acs->user_id = Auth::id();
         $acs->save();
 

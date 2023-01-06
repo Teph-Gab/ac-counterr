@@ -11,6 +11,7 @@ import { Bar } from 'vue-chartjs'
 import Index from './pages/counter/Index.vue';
 import AddAcs from './components/AddAcs.vue';
 import EditAcs from './components/EditAcs.vue';
+import ShowDuplicated from './components/ShowDuplicated.vue';
 import AddSheet from './components/sheet/AddSheet.vue';
 
 
@@ -18,6 +19,7 @@ const app = createApp({Index});
 app.component('AddAcs', AddAcs);
 app.component('EditAcs', EditAcs);
 app.component('AddSheet', AddSheet);
+app.component('ShowDuplicated', ShowDuplicated);
 app.component('Bar', Bar);
 // app.use(abilitiesPlugin, ability, {
 //     useGlobalProperties: true

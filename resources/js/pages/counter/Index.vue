@@ -74,14 +74,17 @@
             <div class="card">
               <div class="card-header">
 
+               <div style="display: flex; justify-content: space-between; aling-item: center">
                 <h5 class="card-title"  v-show="showb == 0">
                   <add-acs @acs-added="refresh"></add-acs>
                 </h5>
                   <h5 class="card-title" v-show="showb != 0">
                   <edit-acs v-for="ac in acs" :key="ac.id" v-bind:id="ac.id" @acs-added="refresh"></edit-acs>
                 </h5>
+                <h5 class="card-title">
+                   <show-duplicated v-for="(ac, index) in acs" :key="ac.id" v-bind:duplicatedac="ac.duplicateacs"></show-duplicated>
+                </h5>
 
-            
                 <div class="card-tools">
                   <div class="btn btn-tool mr-3" @click="copyAcs">
                     <i class="fas fa-copy"></i><span>Copy</span>
@@ -109,6 +112,7 @@
                     <i class="fas fa-times"></i>
                   </button>-->
                 </div>
+              </div>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
