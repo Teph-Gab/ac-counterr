@@ -11,20 +11,17 @@ use App\Http\Resources\CounterResource;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class CounterController extends Controller
-{ 
-    
+{   
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
 
-
     public function index()
     {
         $acs = Counter::where('user_id', Auth::id())->get();
         return response()->json($acs);
-            // auth('sanctum')->user()->id
     }
 
     /**

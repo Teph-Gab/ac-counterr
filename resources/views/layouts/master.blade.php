@@ -7,8 +7,9 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>Counter | AC-COUNTER</title>
+  <title>AC-COUNTER</title>
 
+  <link rel="icon" href="{{ asset('img/logo/accounter-logo.png') }}" type="image/icon type">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
@@ -132,10 +133,13 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <router-link class="brand-link" :to="{ name: 'index'}">  
+    <img src="{{ asset('img/logo/accounter-flash-logo.png') }}" alt="Ac Counter Logo" class="brand-image" style="opacity: .8"><span class="brand-text font-weight-light">AC-COUNTER</span>
+      <!-- <span class="brand-text font-weight-light">AC-COUNTER</span> -->
+    </router-link>
+    <!-- <a href="index3.html" class="brand-link"> -->
       <!-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
-      <span class="brand-text font-weight-light">AC-COUNTER</span>
-    </a>
+    <!-- </a> -->
 
     <!-- Sidebar -->
     <div class="sidebar">
