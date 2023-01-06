@@ -190,7 +190,6 @@ class CounterController extends Controller
             $mergeCompleted = array_unique(array_merge($old_count[0]->completedacs, $count->completedacs));
             $mergeRestart = array_unique(array_merge($old_count[0]->restartacs, $count->restartacs));
             $mergeLaunched = array_unique(array_merge($old_count[0]->launchedacs, $count->launchedacs));
-            $mergeDuplicated = array_unique(array_merge($old_count[0]->duplicateacs, $count->duplicateacs));
 
             foreach ($mergeCompleted as $key => $value) {
                 $completedTab[] = $value;
@@ -204,8 +203,17 @@ class CounterController extends Controller
                 $launchedTab[] = $value;
             }
 
-            foreach ($mergeDuplicated as $key => $value) {
-                $duplicatedTab[] = $value;
+            if ($count->duplicateacs && $old_count[0]->duplicateacs) {
+                $mergeDuplicated = array_unique(array_merge($old_count[0]->duplicateacs, $count->duplicateacs));
+                foreach ($mergeDuplicated as $key => $value) {
+                    $duplicatedTab[] = $value;
+                }
+            }
+            else{
+                $mergeDuplicated = array_unique($count->duplicateacs);
+                foreach ($mergeDuplicated as $key => $value) {
+                    $duplicatedTab[] = $value;
+                }
             }
 
             $o_count->update(['completedacs' => $completedTab]);
