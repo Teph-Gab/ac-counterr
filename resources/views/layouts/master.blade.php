@@ -190,14 +190,6 @@
 
               @if($authUserRoles[0]->roles[0]->name == 'super-admin')
                 <li class="nav-header">ADMIN</li>
-                <!-- <li class="nav-item">
-                  <router-link class="nav-link" class-active="active" :to="{ name: 'admin.user.index'}">
-                    <i class="fas fa-user-shield"></i>
-                    <p>
-                     Roles
-                    </p>
-                  </router-link>
-                </li> -->
                 <li class="nav-item">
                   <router-link class="nav-link" class-active="active" :to="{ name: 'admin.user.index'}">
                     <i class="fas fa-users"></i>
