@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" @click="showCreateModal">
+        <button type="button" class="btn btn-primary" @click="showCreateModal">
             <i class="fas fa-calculator"></i> Click to count
         </button>
         <!-- Modal -->

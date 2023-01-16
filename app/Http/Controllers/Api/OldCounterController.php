@@ -103,6 +103,21 @@ class OldCounterController extends Controller
         $novemberRestart = 0;
         $decemberRestart = 0;
 
+        // Launched
+        $januaryLaunched = 0;
+        $februaryLaunched = 0;
+        $marchLaunched = 0;
+        $aprilLaunched = 0;
+        $mayLaunched = 0;
+        $juneLaunched = 0;
+        $julyLaunched = 0;
+        $augustLaunched = 0;
+        $septemberLaunched = 0;
+        $octoberLaunched = 0;
+        $novemberLaunched = 0;
+        $decemberLaunched = 0;
+
+        // Completed
         $january = OldCounter::where('user_id', Auth::id())->whereMonth( 'created_at', Carbon::parse('january')->format('m'))->whereYear('created_at',Carbon::parse('january')->format('Y'))->get(['completedacs']);
         $february = OldCounter::where('user_id', Auth::id())->whereMonth( 'created_at', Carbon::parse('february')->format('m'))->whereYear('created_at',Carbon::parse('february')->format('Y'))->get(['completedacs']);
         $march = OldCounter::where('user_id', Auth::id())->whereMonth( 'created_at', Carbon::parse('march')->format('m'))->whereYear('created_at',Carbon::parse('march')->format('Y'))->get(['completedacs']);
@@ -116,6 +131,7 @@ class OldCounterController extends Controller
         $november = OldCounter::where('user_id', Auth::id())->whereMonth( 'created_at', Carbon::parse('november')->format('m'))->whereYear('created_at',Carbon::parse('november')->format('Y'))->get(['completedacs']);
         $december = OldCounter::where('user_id', Auth::id())->whereMonth( 'created_at', Carbon::parse('december')->format('m'))->whereYear('created_at',Carbon::parse('december')->format('Y'))->get(['completedacs']);
 
+        // Restart
         $jan = OldCounter::where('user_id', Auth::id())->whereMonth( 'created_at', Carbon::parse('january')->format('m'))->whereYear('created_at',Carbon::parse('january')->format('Y'))->get(['restartacs']);
         $feb = OldCounter::where('user_id', Auth::id())->whereMonth( 'created_at', Carbon::parse('february')->format('m'))->whereYear('created_at',Carbon::parse('february')->format('Y'))->get(['restartacs']);
         $mar = OldCounter::where('user_id', Auth::id())->whereMonth( 'created_at', Carbon::parse('march')->format('m'))->whereYear('created_at',Carbon::parse('march')->format('Y'))->get(['restartacs']);
@@ -129,6 +145,21 @@ class OldCounterController extends Controller
         $nov = OldCounter::where('user_id', Auth::id())->whereMonth( 'created_at', Carbon::parse('november')->format('m'))->whereYear('created_at',Carbon::parse('november')->format('Y'))->get(['restartacs']);
         $dec = OldCounter::where('user_id', Auth::id())->whereMonth( 'created_at', Carbon::parse('december')->format('m'))->whereYear('created_at',Carbon::parse('december')->format('Y'))->get(['restartacs']);
 
+        // Launched
+        $januaryL = OldCounter::where('user_id', Auth::id())->whereMonth( 'created_at', Carbon::parse('january')->format('m'))->whereYear('created_at',Carbon::parse('january')->format('Y'))->get(['launchedacs']);
+        $februaryL = OldCounter::where('user_id', Auth::id())->whereMonth( 'created_at', Carbon::parse('february')->format('m'))->whereYear('created_at',Carbon::parse('february')->format('Y'))->get(['launchedacs']);
+        $marchL = OldCounter::where('user_id', Auth::id())->whereMonth( 'created_at', Carbon::parse('march')->format('m'))->whereYear('created_at',Carbon::parse('march')->format('Y'))->get(['launchedacs']);
+        $aprilL = OldCounter::where('user_id', Auth::id())->whereMonth( 'created_at', Carbon::parse('april')->format('m'))->whereYear('created_at',Carbon::parse('april')->format('Y'))->get(['launchedacs']);
+        $mayL = OldCounter::where('user_id', Auth::id())->whereMonth( 'created_at', Carbon::parse('may')->format('m'))->whereYear('created_at',Carbon::parse('may')->format('Y'))->get(['launchedacs']);
+        $juneL = OldCounter::where('user_id', Auth::id())->whereMonth( 'created_at', Carbon::parse('june')->format('m'))->whereYear('created_at',Carbon::parse('june')->format('Y'))->get(['launchedacs']);
+        $julyL = OldCounter::where('user_id', Auth::id())->whereMonth( 'created_at', Carbon::parse('july')->format('m'))->whereYear('created_at',Carbon::parse('july')->format('Y'))->get(['launchedacs']);
+        $augustL = OldCounter::where('user_id', Auth::id())->whereMonth( 'created_at', Carbon::parse('august')->format('m'))->whereYear('created_at',Carbon::parse('august')->format('Y'))->get(['launchedacs']);
+        $septemberL = OldCounter::where('user_id', Auth::id())->whereMonth( 'created_at', Carbon::parse('september')->format('m'))->whereYear('created_at',Carbon::parse('september')->format('Y'))->get(['launchedacs']);
+        $octoberL = OldCounter::where('user_id', Auth::id())->whereMonth( 'created_at', Carbon::parse('october')->format('m'))->whereYear('created_at',Carbon::parse('october')->format('Y'))->get(['launchedacs']);
+        $novemberL = OldCounter::where('user_id', Auth::id())->whereMonth( 'created_at', Carbon::parse('november')->format('m'))->whereYear('created_at',Carbon::parse('november')->format('Y'))->get(['launchedacs']);
+        $decemberL = OldCounter::where('user_id', Auth::id())->whereMonth( 'created_at', Carbon::parse('december')->format('m'))->whereYear('created_at',Carbon::parse('december')->format('Y'))->get(['launchedacs']);
+
+        // Completed
         if (count($january) != 0) {
             $januaryCompleted = count($january[0]->completedacs);
         }
@@ -166,7 +197,7 @@ class OldCounterController extends Controller
             $decemberCompleted = count($december[0]->completedacs);
         }
 
-
+        // Restart
         if (count($jan) != 0) {
             $januaryRestart = count($jan[0]->restartacs);
         }
@@ -204,13 +235,48 @@ class OldCounterController extends Controller
             $decemberRestart = count($dec[0]->restartacs);
         }
 
-        // for ($i=0; $i < $january->count(); $i++) { 
-        //     $januaryCompleted = $januaryCompleted + count($january[$i]->completedacs);
-        // }
+        // Launched
+        if (count($januaryL) != 0) {
+            $januaryLaunched = count($januaryL[0]->launchedacs);
+        }
+        if (count($februaryL) != 0) {
+            $februaryLaunched = count($februaryL[0]->launchedacs);
+        }
+        if (count($marchL) != 0) {
+            $marchLaunched = count($marchL[0]->launchedacs);
+        }
+        if (count($aprilL) != 0) {
+            $aprilLaunched = count($aprilL[0]->launchedacs);
+        }
+        if (count($mayL) != 0) {
+            $mayLaunched = count($mayL[0]->launchedacs);
+        }
+        if (count($juneL) != 0) {
+            $juneLaunched = count($juneL[0]->launchedacs);
+        }
+        if (count($julyL) != 0) {
+            $julyLaunched = count($julyL[0]->launchedacs);
+        }
+        if (count($augustL) != 0) {
+            $augustLaunched = count($augustL[0]->launchedacs);
+        }
+        if (count($septemberL) != 0) {
+            $septemberLaunched = count($septemberL[0]->launchedacs);
+        }
+        if (count($octoberL) != 0) {
+            $octoberLaunched = count($octoberL[0]->launchedacs);
+        }
+        if (count($novemberL) != 0) {
+            $novemberLaunched = count($novemberL[0]->launchedacs);
+        }
+        if (count($decemberL) != 0) {
+            $decemberLaunched = count($decemberL[0]->launchedacs);
+        }
 
         return response()->json([
             "allcompleted" => [$januaryCompleted, $februaryCompleted, $marchCompleted, $aprilCompleted, $mayCompleted, $juneCompleted, $julyCompleted, $augustCompleted, $septemberCompleted, $octoberCompleted, $novemberCompleted, $decemberCompleted],
-            "allrestart" => [$januaryRestart, $februaryRestart, $marchRestart, $aprilRestart, $mayRestart, $juneRestart, $julyRestart, $augustRestart, $septemberRestart, $octoberRestart, $novemberRestart, $decemberRestart]
+            "allrestart" => [$januaryRestart, $februaryRestart, $marchRestart, $aprilRestart, $mayRestart, $juneRestart, $julyRestart, $augustRestart, $septemberRestart, $octoberRestart, $novemberRestart, $decemberRestart],
+            "alllaunched" => [$januaryLaunched, $februaryLaunched, $marchLaunched, $aprilLaunched, $mayLaunched, $juneLaunched, $julyLaunched, $augustLaunched, $septemberLaunched, $octoberLaunched, $novemberLaunched, $decemberLaunched]
             ]);
     }
 

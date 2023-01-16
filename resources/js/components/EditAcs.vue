@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" @click="showEditModal">
+        <button type="button" class="btn btn-primary" @click="showEditModal">
             <i class="fas fa-calculator"></i> Click to add more
         </button>
         <!-- Modal -->

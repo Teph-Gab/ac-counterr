@@ -1,6 +1,6 @@
 <template>
     <div>
-        <span class="text-warning" data-bs-toggle="modal" @click="showCreateModal">
+        <span class="text-warning" @click="showCreateModal">
             <i class="fas fa-plus"></i> Add new sheet
         </span>
         <!-- Modal -->

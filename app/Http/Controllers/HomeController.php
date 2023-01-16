@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
 {
@@ -24,7 +27,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // Role::create(['name'=>'superadmin']);
         return view('home');
     }
 }

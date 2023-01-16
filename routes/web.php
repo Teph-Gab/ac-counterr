@@ -20,4 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/admin/user', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/admin/user/{slug}', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::any('{slug}', [App\Http\Controllers\HomeController::class, 'index']);

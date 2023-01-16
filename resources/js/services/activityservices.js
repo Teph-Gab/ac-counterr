@@ -23,7 +23,7 @@ export default function useActivity() {
     let response = await axios.get("/api/monthlydata");
     monthlydata.value = response.data;
     console.log(monthlydata.value)
-};
+  };
 
      const launchChart =  (salesChartCanvas) =>{
           //-----------------------
@@ -97,8 +97,8 @@ export default function useActivity() {
         oldacs,
         launchChart,
         getWeeklyData,
+        getMonthlyData,
         weeklydata,
-        monthlydata,
-        getMonthlydata
+        monthlydata
     };
 }

@@ -13,11 +13,11 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
   <script src="{{ asset('js/app.js') }}" defer></script>
 
 </head>
@@ -42,7 +42,6 @@
         <a href="https://docs.google.com/document/d/14d1Yts_7p3O3k_UQo0cKAl87rrubvME1iKb2LSND1LQ/edit" class="nav-link" target="_blank">Proctor QOS</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-     
         <a href="https://docs.google.com/document/d/1enftJr21ilhyzEBtaLhz37tCLDuzwen-MGTwG2Ko8Q8/edit#heading=h.az97se5ul39q" class="nav-link" target="_blank">Greeter QOS</a>
       </li>
     </ul>
@@ -188,6 +187,40 @@
                   <p>Sheets</p>
                   </router-link>
               </li>
+
+              @if($authUserRoles[0]->roles[0]->name == 'super-admin')
+                <li class="nav-header">ADMIN</li>
+                <!-- <li class="nav-item">
+                  <router-link class="nav-link" class-active="active" :to="{ name: 'admin.user.index'}">
+                    <i class="fas fa-user-shield"></i>
+                    <p>
+                     Roles
+                    </p>
+                  </router-link>
+                </li> -->
+                <li class="nav-item">
+                  <router-link class="nav-link" class-active="active" :to="{ name: 'admin.user.index'}">
+                    <i class="fas fa-users"></i>
+                    <p>
+                      Users
+                      <!-- <span class="badge badge-info right">2</span> -->
+                    </p>
+                  </router-link>
+                </li>
+                @elseif($authUserRoles[0]->roles[0]->name == 'admin')
+                <li class="nav-header">ADMIN</li>
+                <li class="nav-item">
+                  <router-link class="nav-link" class-active="active" :to="{ name: 'admin.user.index'}">
+                    <i class="fas fa-users"></i>
+                    <p>
+                      Users
+                      <!-- <span class="badge badge-info right">2</span> -->
+                    </p>
+                  </router-link>
+                </li>
+              @else
+              <li class="nav-header"></li>
+              @endif
             </ul>
           </li>
         </ul>
@@ -217,7 +250,7 @@
   <footer class="main-footer">
     <strong> Developed by <a href="https://instagram.com/TephGab">Teph Gab</a></strong>
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 1.0.2
+      <b>Version</b> 2.1.0
     </div>
   </footer>
 </div>
@@ -225,13 +258,13 @@
 
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- overlayScrollbars -->
-<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.js"></script>
+<script src="{{ asset('dist/js/adminlte.js') }}"></script>
 
 <!-- PAGE PLUGINS -->
 <!-- jQuery Mapael -->
@@ -241,7 +274,7 @@
 <script src="plugins/jquery-mapael/maps/usa_states.min.js"></script> -->
 <!-- ChartJS -->
 <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
-<script src="plugins/chart.js/Chart.min.js"></script>
+<script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
 
 </body>
 </html>
