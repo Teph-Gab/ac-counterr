@@ -191,7 +191,7 @@
               @if($authUserRoles[0]->roles[0]->name == 'super-admin')
                 <li class="nav-header">ADMIN</li>
                 <li class="nav-item">
-                  <router-link class="nav-link" class-active="active" :to="{ name: 'admin.user.index'}">
+                  <router-link class="nav-link" class-active="active" to="{{ env('APP_URL') }}/admin/user">
                     <i class="fas fa-users"></i>
                     <p>
                       Users
@@ -202,7 +202,7 @@
                 @elseif($authUserRoles[0]->roles[0]->name == 'admin')
                 <li class="nav-header">ADMIN</li>
                 <li class="nav-item">
-                  <router-link class="nav-link" class-active="active" :to="{ name: 'admin.user.index'}">
+                  <router-link class="nav-link" class-active="active" to="{{ env('APP_URL') }}/admin/user">
                     <i class="fas fa-users"></i>
                     <p>
                       Users
@@ -242,7 +242,7 @@
   <footer class="main-footer">
     <strong> Developed by <a href="https://instagram.com/TephGab">Teph Gab</a></strong>
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 2.1.0
+      <b>Version</b> 2.2.0
     </div>
   </footer>
 </div>
