@@ -39,10 +39,10 @@
                     </td>
                     <td>
                       <div class="sparkbar" data-color="#00a65a" data-height="20">
-                        <router-link class-active="active" :to="{ name: 'admin.user.show', params: { id: user.id } }">
+                        <router-link class-active="active" :to="{ name: 'user.show', params: { id: user.id } }">
                           <i class="fas fa-eye mr-3"></i>
                         </router-link>
-                        <router-link class-active="active" :to="{ name: 'admin.user.edit', params: { id: user.id } }">
+                        <router-link class-active="active" :to="{ name: 'user.edit', params: { id: user.id } }">
                           <i class="fas fa-edit mr-3" style="color:blueviolet;"></i>
                         </router-link>
                         <i class="fas fa-trash" v-if="can('delete', 'user')" style="color:maroon;"></i>

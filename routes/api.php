@@ -36,8 +36,12 @@ Route::get('monthlydata', [OldCounterController::class, 'getMonthlyData']);
 
 Route::get('getuser', [UserController::class, 'getUser']);
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
-    Route::apiResource('user', UserController::class);
-    Route::get('getroles', [UserController::class, 'getRoles']);
-  });
+Route::apiResource('admin/user', UserController::class);
+
+Route::get('admin/getroles', [UserController::class, 'getRoles']);
+
+// Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+//     Route::apiResource('user', UserController::class);
+//     Route::get('getroles', [UserController::class, 'getRoles']);
+//   });
 
