@@ -191,7 +191,7 @@
               @if($authUserRoles[0]->roles[0]->name == 'super-admin')
                 <li class="nav-header">ADMIN</li>
                 <li class="nav-item">
-                  <router-link class="nav-link" class-active="active" to="/admin/user">
+                  <router-link class="nav-link" class-active="active" to="/admin">
                     <i class="fas fa-users"></i>
                     <p>
                       Users
