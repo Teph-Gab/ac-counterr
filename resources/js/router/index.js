@@ -39,7 +39,7 @@ const routes = [
     },
     {
         path: '/admin/user',
-        name: 'user.index',
+        name: 'admin.user.index',
         component: Users,
         beforeEnter: (to, from, next) => {
             axios.get("/api/getuser").then((res) => {
@@ -67,7 +67,7 @@ const routes = [
     },
     {
         path: '/admin/user/:id',
-        name: 'user.show',
+        name: 'admin.user.show',
         component: UserShow,
         props: true,
         beforeEnter: (to, from, next) => {
@@ -97,7 +97,7 @@ const routes = [
     },
     {
         path: '/admin/user/:id',
-        name: 'user.edit',
+        name: 'admin.user.edit',
         component: UserEdit,
         props: true,
         beforeEnter: (to, from, next) => {

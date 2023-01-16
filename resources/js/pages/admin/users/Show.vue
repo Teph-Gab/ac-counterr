@@ -11,18 +11,18 @@
                 alt="User profile picture" />
             </div>
 
-            <h3 class="profile-username text-center">{{ user.name }}</h3>
+            <h3 class="profile-username text-center">{{ useradm['name'] }}</h3>
 
-            <div v-for="role in user.roles" :key="role.id">
+            <div v-for="role in useradm.roles" :key="role.id">
               <p v-if="role.name == 'super-admin'" class="text-muted text-center">User</p>
             </div>
-            <div v-for="role in user.roles" :key="role.id">
+            <div v-for="role in useradm.roles" :key="role.id">
               <p v-if="role.name != 'super-admin'" class="text-muted text-center">{{ role.name }}</p>
             </div>
 
             <ul class="list-group list-group-unbordered mb-3">
               <li class="list-group-item">
-                <b>{{ user.email }}</b>
+                <b>{{ useradm.email }}</b>
               </li>
               <!-- <li class="list-group-item">
                   <b>Following</b> <a class="float-right">543</a>
@@ -101,7 +101,7 @@
 </template>
   
 <script>
-import { onMounted } from 'vue';
+import { onBeforeMount, onMounted } from 'vue';
 import useUser from "../../../services/userservices";
 import Swal from 'sweetalert2';
 import { useAbility } from '@casl/vue';
@@ -110,125 +110,25 @@ export default {
   props: ['id'],
   emits: ['role-updated'],
   setup(props, { emit }) {
-    const { getUser, user, updateUser, getRoles, roles } = useUser();
+    const { getUserAdmin, useradm, updateUser } = useUser();
     const { can } = useAbility();
-    let monthlyData = [];
 
-    onMounted(getUser(props.id));
-    onMounted(getRoles);
-    onMounted(axios.get('/api/monthlydata').then((response) => {
-      monthlyData.push(JSON.parse(JSON.stringify(response.data)))
-      monthlyRecapChart();
-      monthlyGreetRecapChart();
-    })
-      .catch((error) => console.log(error)));
+    onBeforeMount(getUserAdmin(props.id));
 
-
-    const monthlyRecapChart = () => {
-      let ctx = document.getElementById('monthlyChart')
-      let salesChartData = {
-        datasets: [{
-          label: 'Completed',
-          backgroundColor: 'rgba(92, 184, 92 , 0.9)',
-          borderColor: 'rgba(92, 184, 92, 0.9)',
-          pointRadius: false,
-          pointColor: '#3b8bba',
-          pointStrokeColor: 'rgba(92, 184, 92,1)',
-          pointHighlightFill: '#fff',
-          pointHighlightStroke: 'rgba(92, 184, 92,1)',
-          fill: true,
-          data: monthlyData[0].allcompleted
-        }, {
-          label: 'Restart',
-          backgroundColor: 'rgba(217, 83, 79, 0.9)',
-          borderColor: 'rgba(217, 83, 79, 0.9)',
-          pointRadius: true,
-          pointColor: 'rgba(217, 83, 79, 1)',
-          pointStrokeColor: '#c1c7d1',
-          pointHighlightFill: '#fff',
-          pointHighlightStroke: 'rgba(217, 83, 77, 1)',
-          fill: true,
-          data: monthlyData[0].allrestart
-        }],
-        labels: ['Junuary', 'Feburary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December',],
-      }
-      let salesChartOptions = {
-        maintainAspectRatio: false,
-        responsive: true,
-        legend: {
-          display: true
-        },
-        scales: {
-          xAxes: [{
-            gridLines: {
-              display: false,
-            }
-          }],
-          yAxes: [{
-            gridLines: {
-              display: true,
-            }
-          }]
-        }
-      }
-      new Chart(ctx, {
-        type: 'bar',
-        data: salesChartData,
-        options: salesChartOptions
-      })
-    }
-
-    const monthlyGreetRecapChart = () => {
-      let ctx = document.getElementById('monthlyGreetChart')
-      let salesChartData = {
-        datasets: [{
-          label: 'Launched',
-          backgroundColor: 'rgba(2, 117, 216, 1)',
-          borderColor: 'rgba(2, 117, 216, 1)',
-          pointRadius: false,
-          pointColor: '#3b8bba',
-          pointStrokeColor: 'rgba(2, 117, 216, 1)',
-          pointHighlightFill: '#fff',
-          pointHighlightStroke: 'rgba(2, 117, 216, 1)',
-          fill: true,
-          data: monthlyData[0].alllaunched
-        }],
-        labels: ['Junuary', 'Feburary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December',],
-      }
-      let salesChartOptions = {
-        maintainAspectRatio: false,
-        responsive: true,
-        legend: {
-          display: true
-        },
-        scales: {
-          xAxes: [{
-            gridLines: {
-              display: false,
-            }
-          }],
-          yAxes: [{
-            gridLines: {
-              display: true,
-            }
-          }]
-        }
-      }
-      new Chart(ctx, {
-        type: 'bar',
-        data: salesChartData,
-        options: salesChartOptions
-      })
-    }
+    // onMounted(axios.get('/api/admin/getchartuseradmin/' + useradm.id).then((response) => {
+    //   monthlyData.push(JSON.parse(JSON.stringify(response.data)))
+    //   monthlyRecapChart();
+    //   monthlyGreetRecapChart();
+    // })
+    //   .catch((error) => console.log(error)));
 
     const editUser = async (id) => {
       await updateUser(id);
     }
 
     return {
-      user,
+      useradm,
       editUser,
-      roles,
       can
     };
   }
