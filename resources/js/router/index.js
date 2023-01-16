@@ -39,7 +39,7 @@ const routes = [
     },
     {
         path: '/admin/user',
-        name: 'admin.user',
+        name: 'admin',
         component: Users,
         beforeEnter: (to, from, next) => {
             axios.get("/api/getuser").then((res) => {
