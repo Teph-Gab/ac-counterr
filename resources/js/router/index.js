@@ -39,7 +39,7 @@ const routes = [
     },
     {
         path: '/admin/user',
-        name: 'admin',
+        name: 'admin.user',
         component: Users,
         beforeEnter: (to, from, next) => {
             axios.get("/api/getuser").then((res) => {
@@ -101,7 +101,7 @@ const routes = [
         component: UserEdit,
         props: true,
         beforeEnter: (to, from, next) => {
-            [removeQueryParams, removeHash];
+            // [removeQueryParams, removeHash];
             axios.get("/api/getuser").then((res) => {
                         const user = res.data;
                         if (user[0].roles[0].name == 'super-admin' || user[0].roles[0].name == 'admin')
